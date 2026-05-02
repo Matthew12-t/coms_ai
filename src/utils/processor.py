@@ -73,7 +73,7 @@ def _load_model() -> tuple[CSRNet | None, bool]:
         return None, False
 
     model = CSRNet()
-    state_dict = torch.load(target, map_location="cpu")
+    state_dict = torch.load(target, map_location="cpu", weights_only=True)
     if isinstance(state_dict, dict) and "state_dict" in state_dict:
         state_dict = state_dict["state_dict"]
     model.load_state_dict(state_dict, strict=False)
@@ -102,7 +102,7 @@ def predict_crowd(image_bytes: bytes) -> int:
     tensor = _transform(image).unsqueeze(0)
     with torch.no_grad():
         density_map = _model(tensor)
-    return max(0, int(torch.sum(density_map).item()))
+    return max(0, round(torch.sum(density_map).item()))
 
 
 def model_status() -> dict:
