@@ -1,14 +1,3 @@
----
-title: COMS AI Service
-emoji: 🍱
-colorFrom: indigo
-colorTo: pink
-sdk: docker
-app_port: 7860
-pinned: false
-license: mit
----
-
 # COMS AI Service
 
 Layanan estimasi kepadatan kantin untuk sistem **C.O.M.S (Canteen Occupancy Monitoring System)**. Dibangun menggunakan FastAPI dan model deep learning CSRNet berbasis PyTorch yang mampu menghitung jumlah kepala (head count) dari gambar kamera kantin secara otomatis.
